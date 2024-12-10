@@ -1,36 +1,52 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Happy Hour
 
-First, run the development server:
+Welcome to **Happy Hour**, your go-to tool for finding the best deals at bars and restaurants near you. Whether you're a foodie or a cocktail enthusiast, Happy Hour helps you save money while exploring exciting new venues.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Installation
+
+Follow these steps to set up and run the project locally:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Clone the repository
+git clone https://github.com/ngroenewold95/happy-hour.git
+
+# Navigate to the project directory
+cd happy-hour
+
+# Install dependencies
+npm install
+
+# Load in enviroment variables
+vercel env pull
+
+# Run the project
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Can either be run locally or is currently public at [happy-hour-gamma.vercel.app](https://happy-hour-gamma.vercel.app/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Happy Hour will make it easy to search for deals tailored to your preferences. It will allow you to filter by location, time, type of drink, or cuisine to find the perfect spot for your next outing.
 
-## Learn More
+## Features in development
 
-To learn more about Next.js, take a look at the following resources:
+- Discover nearby happy hour deals.
+- Filter by location, time, and type of cuisine or drink.
+- Save your favorite spots for future reference.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is not licensed for public modification. All rights are reserved by the author. Unauthorized distribution, or modification is prohibited.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
