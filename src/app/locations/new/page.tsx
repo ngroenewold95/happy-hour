@@ -8,21 +8,19 @@ export default function LocationCreatePage() {
     const title = formData.get("title") as string;
     const content = formData.get("content") as string;
 
-    const location = await db.location.create({
+    db.location.create({
       data: { title, content },
     });
-    console.log("Created location:", location);
 
     redirect("/");
   }
-
   return (
     <form action={createLocation}>
       <h3 className="font-bold m-3">Create a Location</h3>
       <div className="flex flex-col gap-4">
         <div className="flex gap-4">
           <label className="w-12" htmlFor="title">
-            Location Name
+            Title
           </label>
           <input
             name="title"
@@ -40,7 +38,7 @@ export default function LocationCreatePage() {
             id="content"
           ></textarea>
         </div>
-        <button type="submit" className="bg-blue-200 p2-2 rounded">
+        <button type="submit" className="bg-blue-200 p-2 rounded">
           Create
         </button>
       </div>
