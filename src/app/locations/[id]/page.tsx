@@ -1,5 +1,5 @@
 import { deleteLocation } from "@/actions";
-import { TiptapView } from "@/components/tiptap";
+import { TiptapViewer } from "@/components/tiptap";
 import { db } from "@/db";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -27,6 +27,9 @@ export default async function LocationShowPage(props: LocationShowPageProps) {
       <div className="flex m-4 justify-between items-center">
         <h1 className="text-xl font-bold">{location.title}</h1>
         <div className="flex gap-4">
+          <Link href={`/`} className="border p-2 rounded">
+            Home
+          </Link>
           <Link
             href={`/locations/${location.id}/edit`}
             className="border p-2 rounded"
@@ -38,7 +41,15 @@ export default async function LocationShowPage(props: LocationShowPageProps) {
           </form>
         </div>
       </div>
-      <TiptapView editorContent={location.content ?? ""} />
+      <TiptapViewer editorContent={location.content ?? ""} />
     </div>
   );
+}
+
+export async function generateStaticParams() {
+  const locations = await db.location.findMany();
+  return locations.map((location) => {
+    return { id: location.id.toString()
+     };
+  });
 }

@@ -1,21 +1,27 @@
-import { db } from "@/db";
-import { redirect } from "next/navigation";
+"use client";
+
+import { startTransition, useActionState, useState } from "react";
+
+import { createLocation } from "@/actions";
+import { TiptapEditor } from "@/components/tiptap";
 
 export default function LocationCreatePage() {
-  async function createLocation(formData: FormData) {
-    "use server";
+  const [formState, createAction] = useActionState(createLocation, {
+    message: "",
+  });
 
-    const title = formData.get("title") as string;
-    const content = formData.get("content") as string;
+  const [content, setContent] = useState("");
 
-    db.location.create({
-      data: { title, content },
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    formData.append("content", content);
+    startTransition(() => {
+      createAction(formData);
     });
-
-    redirect("/");
   }
   return (
-    <form action={createLocation}>
+    <form onSubmit={handleSubmit}>
       <h3 className="font-bold m-3">Create a Location</h3>
       <div className="flex flex-col gap-4">
         <div className="flex gap-4">
@@ -26,19 +32,25 @@ export default function LocationCreatePage() {
             name="title"
             className="border rounded p-2 w-full"
             id="title"
-          ></input>
+          />
         </div>
+
         <div className="flex gap-4">
           <label className="w-12" htmlFor="content">
             Content
           </label>
-          <textarea
-            name="content"
-            className="border rounded p-2 w-full"
-            id="content"
-          ></textarea>
+          <div className="w-full">
+            <TiptapEditor editorContent={content} onChange={setContent} />
+          </div>
         </div>
-        <button type="submit" className="bg-blue-200 p-2 rounded">
+
+        {formState.message ? (
+          <div className="my-2 p-2 bg-red-200 border rounded border-red-400">
+            {formState.message}
+          </div>
+        ) : null}
+
+        <button type="submit" className="rounded p-2 bg-blue-200">
           Create
         </button>
       </div>

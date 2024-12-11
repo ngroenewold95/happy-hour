@@ -10,7 +10,7 @@ interface TipTapEditProps extends TipTapViewProps {
   onChange: (content: string) => void;
 }
 
-export const TiptapEdit = ({ editorContent, onChange }: TipTapEditProps) => {
+export const TiptapEditor = ({ editorContent, onChange }: TipTapEditProps) => {
   const editor = useEditor({
     extensions: [StarterKit],
     immediatelyRender: false,
@@ -31,7 +31,7 @@ export const TiptapEdit = ({ editorContent, onChange }: TipTapEditProps) => {
   return <EditorContent editor={editor} />;
 };
 
-export const TiptapView = ({ editorContent }: TipTapViewProps) => {
+export const TiptapViewer = ({ editorContent }: TipTapViewProps) => {
   const editor = useEditor({
     extensions: [StarterKit],
     immediatelyRender: false,
