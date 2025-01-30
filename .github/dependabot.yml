@@ -13,3 +13,6 @@ updates:
     schedule:
       interval: "weekly"
       day: "sunday"
+    target-branch: "dependencies"
+    labels:
+      - "npm dependencies"
