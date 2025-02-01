@@ -12,13 +12,13 @@ datasource db {
 model Account {
   id                String  @id @default(cuid())
   userId            String
-  category              String
+  type              String
   provider          String
   providerAccountId String
   refresh_token     String?
   access_token      String?
   expires_at        Int?
-  token_category        String?
+  token_type        String?
   scope             String?
   id_token          String?
   session_state     String?
@@ -59,6 +59,7 @@ model VerificationToken {
 model Category {
   id          String @id @default(cuid())
   slug        String @unique
+  name        String @unique
   description String
   locations       Location[]
 
