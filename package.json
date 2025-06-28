@@ -16,7 +16,7 @@
     "@prisma/client": "^6.0.1",
     "@tiptap/pm": "^2.10.3",
     "@tiptap/react": "^2.10.3",
-    "@tiptap/starter-kit": "^2.10.3",
+    "@tiptap/starter-kit": "^2.23.0",
     "framer-motion": "^12.0.6",
     "next": "^15.3.4",
     "next-auth": "^5.0.0-beta.25",
