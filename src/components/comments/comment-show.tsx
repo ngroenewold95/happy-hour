@@ -1,13 +1,20 @@
 import CommentCreateForm from "@/components/comments/comment-create-form";
-import { CommentWithAuthor } from "@/db/queries/comments";
+import {
+  CommentWithAuthor,
+  fetchCommentsByLocationId,
+} from "@/db/queries/comments";
 import Image from "next/image";
 
 interface CommentShowProps {
   commentId: string;
-  comments: CommentWithAuthor[];
+  locationId: string;
 }
 
-export default function CommentShow({ commentId, comments }: CommentShowProps) {
+export default async function CommentShow({
+  commentId,
+  locationId,
+}: CommentShowProps) {
+  const comments = await fetchCommentsByLocationId(locationId);
   const comment = comments.find((c) => c.id === commentId);
 
   if (!comment) {
@@ -17,7 +24,11 @@ export default function CommentShow({ commentId, comments }: CommentShowProps) {
   const children = comments.filter((c) => c.parentId === commentId);
   const renderedChildren = children.map((child) => {
     return (
-      <CommentShow key={child.id} commentId={child.id} comments={comments} />
+      <CommentShow
+        key={child.id}
+        commentId={child.id}
+        locationId={locationId}
+      />
     );
   });
 
