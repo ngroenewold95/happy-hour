@@ -1,9 +1,9 @@
-import type { LocationForListDisplay } from "@/db/queries/locations";
+import type { LocationWithData } from "@/db/queries/locations";
 import paths from "@/paths";
 import Link from "next/link";
 
 interface LocationListProps {
-  fetchData: () => Promise<LocationForListDisplay[]>;
+  fetchData: () => Promise<LocationWithData[]>;
 }
 
 export default async function LocationList({ fetchData }: LocationListProps) {

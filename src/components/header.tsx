@@ -1,12 +1,10 @@
+"use client";
+
 import HeaderAuth from "@/components/header-auth";
-import {
-  Input,
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-} from "@heroui/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@heroui/react";
 import Link from "next/link";
+import { Suspense } from "react";
+import SearchInput from "./search-input";
 
 export default function Header() {
   return (
@@ -18,7 +16,9 @@ export default function Header() {
       </NavbarBrand>
       <NavbarContent justify="center">
         <NavbarItem>
-          <Input />
+          <Suspense>
+            <SearchInput />
+          </Suspense>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">

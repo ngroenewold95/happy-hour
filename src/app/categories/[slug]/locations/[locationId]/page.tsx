@@ -1,9 +1,12 @@
 import CommentCreateForm from "@/components/comments/comment-create-form";
 import CommentList from "@/components/comments/comment-list";
+import CommentShowLoading from "@/components/comments/comment-show-loading";
 import LocationShow from "@/components/locations/location-show";
+import LocationShowLoading from "@/components/locations/location-show-loading";
 import { fetchCommentsByLocationId } from "@/db/queries/comments";
 import paths from "@/paths";
 import Link from "next/link";
+import { Suspense } from "react";
 
 interface LocationShowPageProps {
   params: Promise<{
@@ -25,9 +28,14 @@ export default async function LocationShowPage({
       >
         {"< "}Back to {slug}
       </Link>
-      <LocationShow locationId={locationId} />
+      <Suspense fallback={<LocationShowLoading />}>
+        <LocationShow locationId={locationId} />
+      </Suspense>
+
       <CommentCreateForm locationId={locationId} startOpen />
-      <CommentList fetchData={() => fetchCommentsByLocationId(locationId)} />
+      <Suspense fallback={<CommentShowLoading />}>
+        <CommentList locationId={locationId} />
+      </Suspense>
     </div>
   );
 }
