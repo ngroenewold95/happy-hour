@@ -1,8 +1,5 @@
 import CommentCreateForm from "@/components/comments/comment-create-form";
-import {
-  CommentWithAuthor,
-  fetchCommentsByLocationId,
-} from "@/db/queries/comments";
+import { fetchCommentsByLocationId } from "@/db/queries/comments";
 import Image from "next/image";
 
 interface CommentShowProps {
