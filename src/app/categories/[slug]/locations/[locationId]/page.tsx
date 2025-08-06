@@ -3,7 +3,6 @@ import CommentList from "@/components/comments/comment-list";
 import CommentShowLoading from "@/components/comments/comment-show-loading";
 import LocationShow from "@/components/locations/location-show";
 import LocationShowLoading from "@/components/locations/location-show-loading";
-import { fetchCommentsByLocationId } from "@/db/queries/comments";
 import paths from "@/paths";
 import Link from "next/link";
 import { Suspense } from "react";

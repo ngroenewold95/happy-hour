@@ -1,14 +1,10 @@
 import CommentShow from "@/components/comments/comment-show";
-import {
-  CommentWithAuthor,
-  fetchCommentsByLocationId,
-} from "@/db/queries/comments";
+import { fetchCommentsByLocationId } from "@/db/queries/comments";
 
 interface CommentListProps {
   locationId: string;
 }
 
-// TODO: Get a list of comments from somewhere
 export default async function CommentList({ locationId }: CommentListProps) {
   const comments = await fetchCommentsByLocationId(locationId);
   const topLevelComments = comments.filter(
