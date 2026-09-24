@@ -141,4 +141,4 @@ With access to the Vercel project, `vercel env pull .env.local` fetches the envi
 
 ## License
 
-This project is not licensed for public modification. All rights are reserved by the author. Unauthorized distribution or modification is prohibited.
+[MIT](LICENSE)
